@@ -10,9 +10,7 @@ const bookController = {}
 bookController.getBooks = async (req, res, next) => {
   try {
     let criteria = { };
-    console.log('books')
     const books = await bookService.findBooks(criteria);
-    console.log(books)
 
     return res.status(200).json({ success: true, books });
   } catch (err) {

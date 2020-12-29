@@ -10,17 +10,11 @@ const userController = {}
  */
 userController.register = async (req, res, next) => {
   try {
-    console.log("1")
-
     let userExists = await userService.findUser({ email: req.body.email });
     if (userExists) {
       return res.status(400).json({ error: 'Email already registred' });
     }
-    console.log("2")
-
     let user = await userService.registerUser(req.body);
-    console.log("3")
-
     return res.status(200).json({ success: true, message: "User registered succussfully" });
   } catch (err) {
     console.error(err);
